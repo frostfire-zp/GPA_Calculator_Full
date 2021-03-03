@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Result</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>GPA Result</h1>
+    <p>
+        Here is your overall GPA:
+    </p>
+    <table>
+        <tr>
+            <th class="question_header">Subject</th>
+            <th class="cell_right">Score</th>
+            <th class="cell_right">Grade</th>
+            <th class="cell_right">GPA</th>
+        </tr>
+        {% for subj in subjs %}
+        <tr {% if subj | length==9 and subj[-1]=="C" %} class="counted" {% elif subj | length==9 and subj[-1]=="D" %}
+            class="double_counted" {% endif %}>
+            <td>
+                {{ subj[0] }}
+            </td>
+            <td class="cell_right">
+                {{ subj[5]}}
+            </td>
+            <td class="cell_right">
+                {{ subj[6]}}
+            </td>
+            <td class="cell_right">
+                {{ subj[7]}}
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <th>Total</td>
+            <td></td>
+            <td></td>
+            <th class="cell_right">
+                {{ overall_gpa }}
+            </th>
+        </tr>
+    </table>
+
+    {% if subj | length==9%}
+    <p>
+        Legends:
+    </p>
+    <table class="legend">
+        <tr>
+            <th class="legend_header">Counted</th>
+            <td class="counted"></td>
+        </tr>
+        <tr>
+            <th>Double Counted (Maths Only)</th>
+            <td class="double_counted"></td>
+        </tr>
+    </table>
+    {% endif %}
+    <p>
+        <a href="{{ url_for('index') }}">Restart</a>
+    </p>
+</body>
+
+</html>

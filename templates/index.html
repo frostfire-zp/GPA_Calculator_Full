@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GPA Calculator</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>GPA Calculator</h1>
+    <p>
+        Welcome to the RVHS GPA Calculator.
+    </p>
+
+    <form action="{{url_for('level_subjs')}}">
+        <p>
+            <label for="level">Please enter your academic level:</label>
+        </p>
+
+        <p>
+            <select name="level" id="level">
+                <option value="1">Secondary 1</option>
+                <option value="2">Secondary 2</option>
+                <option value="3">Secondary 3</option>
+                <option value="4">Secondary 4</option>
+            </select>
+        </p>
+
+        <input type="submit">
+
+    </form>
+</body>
+
+</html>

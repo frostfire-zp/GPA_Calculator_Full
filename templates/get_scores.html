@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Get Score</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Get Score</h1>
+    <p>
+        Please key in the scores all your subjects:
+    </p>
+    <form action="{{url_for('gpa_calc')}}" method="POST">
+        <input type="text" name="level" value="{{ level }}" hidden>
+        <table>
+            <tr>
+                <th class="question_header">Subject</th>
+                <th>Score</th>
+            </tr>
+            {% for subj in subjs %}
+            <tr>
+                <td>
+                    <label for="{{ subj[1] }}">{{ subj[0] }}</label>
+                </td>
+                <td>
+                    <input type="number" name="{{ subj[1] }}" id="{{ subj[1] }}" value="{{ range(35, 100) | random  }}"
+                        min="0" max="100" step="1">
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p>
+            <input type="submit" value="Calculate">
+        </p>
+
+    </form>
+    <p>
+        <a href="{{ url_for('index') }}">Restart</a>
+    </p>
+</body>
+
+</html>
