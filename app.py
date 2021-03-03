@@ -190,7 +190,8 @@ def gpa_calc():
         return render_template(
             "result.html",
             subjs=subjs,
-            overall_gpa=overall_gpa
+            overall_gpa=overall_gpa,
+            level=level
         )
 
 
