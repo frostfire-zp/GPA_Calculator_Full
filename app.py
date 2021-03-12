@@ -92,7 +92,7 @@ def sec4_gpa(subjs):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', level=1)
 
 
 @app.route('/subjs_selection/')
@@ -210,4 +210,4 @@ def gpa_calc():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
