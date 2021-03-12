@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 def read_info():
     curr_dir = os.path.dirname(os.path.abspath(__file__))
-    file_name = os.path.join(curr_dir, "static/subjects.csv")
+    file_name = os.path.join(curr_dir, "static/data/subjects.csv")
 
     subjs_info = []
 
@@ -95,8 +95,8 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/level_subjs/')
-def level_subjs():
+@app.route('/subjs_selection/')
+def subjs_selection():
     level = request.args["level"]
 
     if level in "12":
@@ -115,7 +115,7 @@ def level_subjs():
     print(level, compul_subjs, opt_subjs)
 
     return render_template(
-        "level_subjs.html",
+        "subjs_selection.html",
         level=level,
         compul_subjs=compul_subjs,
         opt_subjs=opt_subjs
@@ -149,7 +149,11 @@ def gpa_calc():
             subjs = compul_subjs + opt_subjs
 
             # print(subjs)
-        return render_template("get_scores.html", level=level, subjs=subjs)
+        return render_template(
+            "scores_entry.html", level=level, subjs=subjs,
+            sci_subjs=request.args.getlist("sci_subjs"),
+            hum_subjs=request.args.getlist("hum_subjs"),
+        )
     else:
         # print(request.form)
         level = request.form["level"]
@@ -164,10 +168,18 @@ def gpa_calc():
         total_gpa = 0
         total_weight = 0
 
+        sci_subjs = []
+        hum_subjs = []
+
         for subj in subjs:
             score = int(request.form[subj[1]])
             grade = convert_score_to_grade(score)
             gpa = gpa_conv(grade)
+
+            if subj[4] == "F" and subj[2] == "Science":
+                sci_subjs.append(subj[1])
+            elif subj[4] == "F" and subj[2] == "Humanities":
+                hum_subjs.append(subj[1])
 
             subj.append(score)
             subj.append(grade)
@@ -185,13 +197,15 @@ def gpa_calc():
         else:
             overall_gpa = sec4_gpa(subjs)
 
-        # print(subjs)
+        print(sci_subjs, hum_subjs)
 
         return render_template(
             "result.html",
             subjs=subjs,
             overall_gpa=overall_gpa,
-            level=level
+            level=level,
+            sci_subjs=sci_subjs,
+            hum_subjs=hum_subjs
         )
 
 

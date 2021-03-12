@@ -1,0 +1,27 @@
+/* Big Tablets to 1200px: from 1024 to 1200px */
+@media only screen and (max-width: 1200px) {
+	body {
+		width: 60%;
+	}
+}
+
+/* Small Tablets to Big Tablets: from 768 to 1023px */
+@media only screen and (max-width: 1023px) {
+	body {
+		width: 70%;
+	}
+}
+
+/* Small Phones to Small Tablets: from 481 to 767px */
+@media only screen and (max-width: 767px) {
+	body {
+		width: 100%;
+	}
+}
+
+/* Small Phones: from 0 to 480px */
+@media only screen and (max-width: 480px) {
+	body {
+		width: 100%;
+	}
+}

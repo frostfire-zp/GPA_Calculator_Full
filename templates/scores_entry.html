@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}
+Score Entry
+{% endblock %}
+{% block body %}
+<h1>Score Entry</h1>
+<p>
+    Please key in the scores all your subjects:
+</p>
+<form id="score_form" action="{{url_for('gpa_calc')}}" method="POST">
+    <input type="text" name="level" value="{{ level }}" hidden>
+    <table>
+        <tr>
+            <th class="question_header">Subject</th>
+            <th>Score</th>
+        </tr>
+        {% for subj in subjs %}
+        <tr>
+            <td>
+                <label for="{{ subj[1] }}">{{ subj[0] }}</label>
+            </td>
+            <td class="score_td">
+                <input type="number" name="{{ subj[1] }}" id="{{ subj[1] }}" value="0" min="0" max="100" step="1">
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+<table class="page_btm_table">
+    <tr>
+        <td>
+            {% if level in "12" %}
+            <a href="{{ url_for('index', level=level) }}">
+                <button type="text" value="Back">Back</button>
+            </a>
+            {% else %}
+            <a href="{{ url_for('subjs_selection', level=level, sci_subjs=sci_subjs, hum_subjs=hum_subjs) }}">
+                <button type="text" value="Back">Back</button>
+            </a>
+
+            {% endif %}
+        </td>
+        <td>
+            <button type="submit" value="Submit" form="score_form">Submit</button>
+        </td>
+    </tr>
+</table>
+
+{% endblock %}

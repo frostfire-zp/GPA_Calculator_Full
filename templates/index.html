@@ -1,35 +1,39 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% block title %}
+RV GPA Calculator
+{% endblock %}
+{% block body %}
+<h1>RV GPA Calculator</h1>
+<p>
+    Welcome to the RVHS GPA Calculator.
+</p>
 
-<head>
-    <title>GPA Calculator</title>
-    <link rel="icon" href="data:,">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-
-<body>
-    <h1>GPA Calculator</h1>
+<form action="{{url_for('subjs_selection')}}">
     <p>
-        Welcome to the RVHS GPA Calculator.
+        <label for="level">Please enter your academic level:</label>
     </p>
 
-    <form action="{{url_for('level_subjs')}}">
-        <p>
-            <label for="level">Please enter your academic level:</label>
-        </p>
+    <p>
 
-        <p>
-            <select name="level" id="level">
-                <option value="1">Secondary 1</option>
-                <option value="2">Secondary 2</option>
-                <option value="3">Secondary 3</option>
-                <option value="4">Secondary 4</option>
-            </select>
-        </p>
+    </p>
+    <table class="page_btm_table">
+        <tr>
+            <td>
+                <select name="level" id="level">
+                    {% for i in range(1, 5) %}
+                    <option value="{{i}}" {% if i==request.args['level']|int %} selected {% endif %}>Secondary {{i}}
+                    </option>
 
-        <input type="submit">
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <button type="submit" value="Submit">Submit</button>
+            </td>
+        </tr>
+    </table>
 
-    </form>
-</body>
 
-</html>
+
+</form>
+{% endblock %}

@@ -1,0 +1,147 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* border: 1px solid rgb(218, 218, 247); */
+}
+
+body {
+	width: 40%;
+	margin: 0 auto;
+	background-color: #fff;
+	color: #2d3436;
+	font-family: "Lato", Arial, sans-serif;
+	font-weight: 300;
+	font-size: 24px;
+	text-rendering: optimizeLegibility;
+	overflow-x: hidden;
+}
+
+table {
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-spacing: 0;
+	overflow: hidden;
+	width: 100%;
+}
+
+th,
+td {
+	border: 1px solid black;
+	text-align: left;
+	padding: 5px;
+}
+
+.score_td {
+	padding: 0px !important;
+}
+
+.page_btm_table {
+	margin-top: 2%;
+	border: 0;
+}
+
+.page_btm_table td {
+	border: 0;
+	width: 50%;
+}
+
+a {
+	text-decoration: none;
+}
+
+button,
+button:visited {
+	display: block;
+	width: 98%;
+	margin: 0 auto;
+	font-size: 90%;
+	border: 3px solid #0984e3;
+	padding: 5px;
+	background: transparent;
+	color: #2d3436;
+	text-decoration: none;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+button:hover,
+button:active {
+	background-color: #0984e3;
+	color: white;
+}
+
+select {
+	border: 3px solid #0984e3;
+	padding: 5px;
+	/* outline: 3px solid #0984e3; */
+	background: transparent;
+	font-size: 90%;
+	border-image: none;
+	box-shadow: none;
+	width: 98%;
+}
+
+h1 {
+	width: 90%;
+	margin: 5% auto;
+	padding: 5px auto;
+	border: 5px solid #0984e3;
+	text-align: center;
+}
+
+p {
+	margin: 1% 0;
+}
+
+.normal_li {
+	margin-left: 25px;
+}
+
+.checkbox_opt {
+	list-style-type: none;
+}
+
+.checkbox_opt input {
+	transform: scale(2);
+	width: 10px;
+	margin-left: 5px;
+	margin-right: 3px;
+	overflow: hidden;
+	position: relative;
+	top: -2px;
+}
+
+.question_header {
+	width: 50%;
+}
+
+input[type="number"] {
+	width: 98%;
+	margin: 0 auto;
+	height: 100%;
+	display: block;
+	position: relative;
+}
+
+.cell_right {
+	text-align: right;
+	margin-right: 5px;
+	width: 15%;
+}
+
+.counted {
+	background-color: #81ecec;
+}
+
+.double_counted {
+	background-color: #00b8b5;
+}
+
+.legend {
+	font-size: 80%;
+	width: 83.3%;
+}
+
+.legend_header {
+	width: 66.7%;
+}
