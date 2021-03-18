@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}
+GPA Result
+{% endblock %}
+
+{% block body %}
+
+<main>
+    <section class="panel panel_p234">
+        <div class="div_top">
+            <h1>GPA Result</h1>
+        </div>
+        <div class="div_mid">
+            <p>
+                Here is your overall GPA:
+            </p>
+            <table>
+                <tr>
+                    <th class="question_header">Subject</th>
+                    <th class="cell_right">Score</th>
+                    <th class="cell_right">Grade</th>
+                    <th class="cell_right">GPA</th>
+                </tr>
+                {% for subj in subjs %}
+                <tr {% if subj | length==9 and subj[-1]=="C" %} class="counted" {% elif subj | length==9 and
+                    subj[-1]=="D" %} class="double_counted" {% endif %}>
+                    <td>
+                        {{ subj[0] }}
+                    </td>
+                    <td class="cell_right">
+                        {{ subj[5]}}
+                    </td>
+                    <td class="cell_right">
+                        {{ subj[6]}}
+                    </td>
+                    <td class="cell_right">
+                        {{ subj[7]}}
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th class="total_header">Total</td>
+                    <td></td>
+                    <td></td>
+                    <th class="cell_right">
+                        {{ gpa }}
+                    </th>
+                </tr>
+            </table>
+
+            {% if level == "4" %}
+            <p>
+                Legends:
+            </p>
+            <table class="legend">
+                <tr>
+                    <th class="legend_header">Counted</th>
+                    <td class="counted"></td>
+                </tr>
+                <tr>
+                    <th>Double Counted (Maths Only)</th>
+                    <td class="double_counted"></td>
+                </tr>
+            </table>
+            {% endif %}
+        </div>
+        <div class="div_bot">
+            <div class="left_btn">
+                <a
+                    href="{{ url_for('gpa_calc', level=level, opt_sci_subjs=opt_sci_subjs,opt_hum_subjs=opt_hum_subjs) }}">
+                    <button type="text" value="Back">Back</button>
+                </a>
+            </div>
+            <div class="right_btn">
+                <a href="{{ url_for('index') }}">
+                    <button type="text" value="Restart">Restart</button>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+<div class="circle1"></div>
+<div class="circle2"></div>
+<div class="circle3"></div>
+
+{% endblock %}

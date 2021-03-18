@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}
+Subject Selection
+{% endblock %}
+
+{% block body %}
+
+<main>
+    <section class="panel panel_p234">
+        <div class="div_top">
+            <h1>Subject Selection</h1>
+        </div>
+        <div class="div_mid">
+            <p>Please select the subjects you are taking.</p>
+
+            <form id="subjs_form" action="{{url_for('gpa_calc')}}">
+                <input type="text" name="level" value="{{ level }}" hidden>
+                <p>
+                    Here are the compulsory subjects for Secondary {{ level }}:
+                </p>
+
+                <ul>
+                    {% for subj in compul_subjs %}
+                    <li class="normal_li">
+                        {{ subj[0]}}
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <p>
+                    Please select the Science subjects you are taking:
+                </p>
+                <ul>
+                    {% for subj in opt_sci_subjs %}
+                    <li class="checkbox_opt">
+                        <input type="checkbox" name="opt_sci_subjs" id="{{ subj[1] }}" value="{{ subj[1] }}" {% if
+                            subj[1] in request.args.getlist("opt_sci_subjs") %} checked {% endif %}>
+                        <label for="{{ subj[1] }}">
+                            {{ subj[0] }}
+                        </label>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <p>
+                    Please select the Humanities subjects you are taking:
+                </p>
+                <ul>
+                    {% for subj in opt_hum_subjs %}
+                    <li class="checkbox_opt">
+                        <input type="checkbox" name="opt_hum_subjs" id="{{ subj[1] }}" value="{{ subj[1] }}" {% if
+                            subj[1] in request.args.getlist("opt_hum_subjs") %} checked {% endif %}>
+                        <label for="{{ subj[1] }}">
+                            {{ subj[0] }}
+                        </label>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </form>
+        </div>
+        <div class="div_bot">
+            <div class="left_btn">
+                <a href="{{ url_for('index', level=level) }}">
+                    <button type="text" value="Back">Back</button>
+                </a>
+            </div>
+            <div class="right_btn">
+                <button type="submit" value="Submit" form="subjs_form">Submit</button>
+            </div>
+        </div>
+    </section>
+</main>
+<div class="circle1"></div>
+<div class="circle2"></div>
+<div class="circle3"></div>
+
+{% endblock %}

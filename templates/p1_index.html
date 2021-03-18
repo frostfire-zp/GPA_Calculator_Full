@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+GPA Calculator
+{% endblock %}
+
+{% block body %}
+<main>
+    <section class="panel panel_p1">
+        <div class="div_top">
+            <h1>GPA Calculator</h1>
+        </div>
+        <div class="div_mid">
+            <h2>
+                Welcome to the RVHS GPA Calculator.
+            </h2>
+            <h2>
+                Please enter your academic level:
+            </h2>
+        </div>
+        <div class="div_bot">
+            <div class="left_btn">
+                <form action="{{url_for('subjs_selection')}}" id="subjs_selection">
+                    <select class="select-css" name="level">
+                        {% for i in range(1, 5) %}
+                        <option value="{{i}}" {% if request.args|length !=0 and i==request.args['level']|int %} selected
+                            {% endif %}>Secondary {{i}}
+                        </option>
+
+                        {% endfor %}
+                    </select>
+                </form>
+            </div>
+            <div class="right_btn">
+                <button type="submit" value="Submit" form="subjs_selection">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </section>
+</main>
+<div class="circle1"></div>
+<div class="circle2"></div>
+<div class="circle3"></div>
+
+{% endblock %}

@@ -3,22 +3,23 @@
 RV GPA Calculator
 {% endblock %}
 {% block body %}
-<h1>RV GPA Calculator</h1>
-<p>
-    Welcome to the RVHS GPA Calculator.
-</p>
-
 <form action="{{url_for('subjs_selection')}}">
-    <p>
-        <label for="level">Please enter your academic level:</label>
-    </p>
 
-    <p>
+    <main>
+        <section class="heading">
+            <h1>RV GPA Calculator</h1>
 
-    </p>
-    <table class="page_btm_table">
-        <tr>
-            <td>
+        </section>
+        <section class="content">
+            <div class="message">
+                Welcome to the RVHS GPA Calculator!
+            </div>
+            <div class="message">
+                Please enter your academic level:
+            </div>
+        </section>
+        <section class="bot-nav">
+            <div>
                 <select name="level" id="level">
                     {% for i in range(1, 5) %}
                     <option value="{{i}}" {% if request.args|length !=0 and i==request.args['level']|int %} selected {%
@@ -27,14 +28,11 @@ RV GPA Calculator
 
                     {% endfor %}
                 </select>
-            </td>
-            <td>
+            </div>
+            <div>
                 <button type="submit" value="Submit">Submit</button>
-            </td>
-        </tr>
-    </table>
-
-
-
+            </div>
+        </section>
+    </main>
 </form>
 {% endblock %}

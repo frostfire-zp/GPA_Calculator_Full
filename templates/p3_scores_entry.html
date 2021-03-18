@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+Score Entry
+{% endblock %}
+
+{% block body %}
+
+<main>
+    <section class="panel panel_p234">
+        <div class="div_top">
+            <h1>Score Entry</h1>
+        </div>
+        <div class="div_mid">
+            <p>
+                Please key in the scores of your subjects:
+            </p>
+            <form id="score_form" action="{{url_for('gpa_calc')}}" method="POST">
+                <input type="text" name="level" value="{{ level }}" hidden>
+                <table>
+                    <tr>
+                        <th class="question_header">Subject</th>
+                        <th class="score_header">Score</th>
+                    </tr>
+                    {% for subj in user_subjs %}
+                    <tr>
+                        <td>
+                            <label for="{{ subj[1] }}">{{ subj[0] }}</label>
+                        </td>
+                        <td>
+                            <input type="number" name="{{ subj[1] }}" id="{{ subj[1] }}" value="0" min="0" max="100"
+                                step="1">
+                            {# {{ range(30, 100) | random }} #}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </form>
+        </div>
+        <div class="div_bot">
+            <div class="left_btn">
+                {% if level in "12" %}
+                <a href="{{ url_for('index', level=level) }}">
+                    <button type="text" value="Back">Back</button>
+                </a>
+                {% else %}
+                <a
+                    href="{{ url_for('subjs_selection', level=level, opt_sci_subjs=opt_sci_subjs, opt_hum_subjs=opt_hum_subjs) }}">
+                    <button type="text" value="Back">Back</button>
+                </a>
+
+                {% endif %}
+            </div>
+            <div class="right_btn">
+                <button type="submit" value="Submit" form="score_form">Submit</button>
+            </div>
+        </div>
+    </section>
+</main>
+<div class="circle1"></div>
+<div class="circle2"></div>
+<div class="circle3"></div>
+
+{% endblock %}
