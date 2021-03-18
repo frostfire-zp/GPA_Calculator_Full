@@ -44,21 +44,122 @@
 
 /* Small Phones to Small Tablets: from 768 to 1024 */
 @media only screen and (max-width: 1024px) {
+	/* Fonts */
+	h1 {
+		font-size: 2.5rem;
+	}
+
+	h2 {
+		font-size: 1.6rem;
+	}
+
+	main {
+		font-size: 110%;
+	}
+
 	.panel {
 		width: 70%;
+	}
+
+	.circle1 {
+		height: 7rem;
+		width: 7rem;
+		top: 8%;
+		right: 10%;
+	}
+
+	.circle2 {
+		height: 7rem;
+		width: 7rem;
+		bottom: 8%;
+		left: 10%;
+	}
+
+	.circle3 {
+		height: 4rem;
+		width: 4rem;
+		top: 20%;
+		left: 11%;
 	}
 }
 
 /* Small Phones to Small Tablets: from 480 to 768 */
 @media only screen and (max-width: 768px) {
+	/* Fonts */
+	h1 {
+		font-size: 3.1rem;
+	}
+
+	h2 {
+		font-size: 1.9rem;
+	}
+
+	main {
+		font-size: 110%;
+	}
 	.panel {
+		min-height: 90vh;
 		width: 90%;
+	}
+
+	.circle1 {
+		top: 3%;
+		right: 5%;
+	}
+
+	.circle2 {
+		bottom: 3%;
+		left: 5%;
+	}
+
+	.circle3 {
+		top: 10%;
+		left: 0%;
 	}
 }
 
 /* Small Phones: from 0 to 480 */
 @media only screen and (max-width: 480px) {
+	/* Fonts */
+	h1 {
+		font-size: 1.8rem;
+		font-weight: 600;
+	}
+
+	h2 {
+		font-size: 1.9rem;
+	}
+
+	main {
+		font-size: 110%;
+	}
 	.panel {
-		width: 90%;
+		min-height: 90vh;
+		width: 98%;
+		border-radius: 1rem;
+	}
+
+	.circle1 {
+		height: 3rem;
+		width: 3rem;
+		top: -1%;
+		right: -4%;
+	}
+
+	.circle2 {
+		height: 2rem;
+		width: 2rem;
+		bottom: 5%;
+		left: -4%;
+	}
+
+	.circle3 {
+		height: 1rem;
+		width: 1rem;
+		top: 5%;
+		left: -2%;
+	}
+	.div_mid {
+		width: 96%;
 	}
 }
